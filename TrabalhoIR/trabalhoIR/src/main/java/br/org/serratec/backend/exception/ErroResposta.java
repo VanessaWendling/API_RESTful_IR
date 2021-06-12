@@ -8,6 +8,7 @@ public class ErroResposta {
 	private String titulo;
 	private LocalDateTime dataHora;
 	private List<String> erros;
+
 	public ErroResposta(Integer status, String titulo, LocalDateTime dataHora, List<String> erros) {
 		super();
 		this.status = status;
@@ -15,9 +16,8 @@ public class ErroResposta {
 		this.dataHora = dataHora;
 		this.erros = erros;
 	}
-	
+
 	public ErroResposta() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getStatus() {

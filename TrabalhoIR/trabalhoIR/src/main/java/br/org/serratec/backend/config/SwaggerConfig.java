@@ -16,23 +16,19 @@ public class SwaggerConfig {
 
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
+		return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.basePackage("br.org.serratec.backend.controller"))
-				.paths(PathSelectors.any())
-				.build().apiInfo(apiInfo());
+				.paths(PathSelectors.any()).build().apiInfo(apiInfo());
 	}
+
 	private ApiInfo apiInfo() {
-		ApiInfo apiInfo = new ApiInfoBuilder()
-				.title("Trabalho Imposto de Renda, INSS e salário do Funcionário")
-				.description("Essa API eh utilizada para estudos do curso do Serratec")
-				.license("Apache 2.0")
-				.licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
-				.termsOfServiceUrl("/service.html")
+		ApiInfo apiInfo = new ApiInfoBuilder().title("Trabalho Imposto de Renda, INSS e salário do Funcionário")
+				.description("Essa API eh utilizada para estudos do curso do Serratec").license("Apache 2.0")
+				.licenseUrl("https://www.apache.org/licenses/LICENSE-2.0").termsOfServiceUrl("/service.html")
 				.version("1.0.1 Ultimate")
 				.contact(new Contact("Caverna Flasco do Dragão", "www.serratec.org", "matheusmorsch@gmail.com"))
 				.build();
 		return apiInfo;
-		
+
 	}
 }

@@ -9,12 +9,12 @@ public class FuncionarioInserirDTO {
 	protected String cpf;
 	protected LocalDate dataNascimento;
 	private double salarioBruto;
-	
+
 	public FuncionarioInserirDTO() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public FuncionarioInserirDTO(Funcionario funcionario) {super();
+
+	public FuncionarioInserirDTO(Funcionario funcionario) {
 		this.nome = funcionario.getNome();
 		this.cpf = funcionario.getCpf();
 		this.dataNascimento = funcionario.getDataNascimento();
@@ -52,6 +52,5 @@ public class FuncionarioInserirDTO {
 	public void setSalarioBruto(double salarioBruto) {
 		this.salarioBruto = salarioBruto;
 	}
-	
-	
+
 }

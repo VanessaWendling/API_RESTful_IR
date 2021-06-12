@@ -16,27 +16,27 @@ import io.swagger.annotations.ApiModelProperty;
 
 @MappedSuperclass
 public abstract class Pessoa {
-	
+
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column (name = "id_pessoa")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_pessoa")
 	@ApiModelProperty(value = "Identificador único da Pessoa")
 	private Long id;
-	
-	@NotBlank(message="Nome não pode ser vazio")
+
+	@NotBlank(message = "Nome não pode ser vazio")
 	@ApiModelProperty(value = "Nome da Pessoa", required = true)
 	protected String nome;
-	
+
 	@NotBlank(message = "O cpf nao pode ser vazio")
 	@CPF(message = "CPF no formato invalido")
 	@ApiModelProperty(value = "CPF da Pessoa", required = true)
 	protected String cpf;
-	
-	@Past(message = "Data inválida") 
+
+	@Past(message = "Data inválida")
 	@ApiModelProperty(value = "Data de Nascimento da Pessoa", required = true)
 	@Column(name = "data_nascimento")
 	protected LocalDate dataNascimento;
-	
+
 	public Pessoa() {
 		// TODO Auto-generated constructor stub
 	}
@@ -111,6 +111,5 @@ public abstract class Pessoa {
 			return false;
 		return true;
 	}
-	
-	
+
 }

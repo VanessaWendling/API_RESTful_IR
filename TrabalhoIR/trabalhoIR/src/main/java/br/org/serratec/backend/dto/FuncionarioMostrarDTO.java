@@ -1,13 +1,12 @@
 package br.org.serratec.backend.dto;
 
-import java.time.LocalDate;
 
 import br.org.serratec.backend.model.Funcionario;
 
 public class FuncionarioMostrarDTO {
 	private String nome;
 	private Double salario;
-	
+
 	public FuncionarioMostrarDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -32,5 +31,5 @@ public class FuncionarioMostrarDTO {
 	public void setSalario(Double salario) {
 		this.salario = salario;
 	}
-	
+
 }

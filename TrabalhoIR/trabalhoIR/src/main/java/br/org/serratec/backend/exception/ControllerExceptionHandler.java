@@ -17,39 +17,33 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
-	// sobrescrevemos o método para tratar do nosso jeito
+
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		/*
-		 * podemos fazer return super.handleExceptionInternal (ex, ex, headers, status,
-		 * request);
-		 */
 
-		// adicionamos essa lista de erro
 		List<String> erros = new ArrayList<String>();
 		for (FieldError erro : ex.getBindingResult().getFieldErrors()) {
 			erros.add(erro.getField() + " : " + erro.getDefaultMessage());
 		}
 
-		// trocamos o return
 		ErroResposta erroResposta = new ErroResposta(status.value(), "Existem Campos inválidos", LocalDateTime.now(),
 				erros);
 		return super.handleExceptionInternal(ex, erroResposta, headers, status, request);
-	
+
 	}
-	
+
 	@Override
-    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
-            HttpHeaders headers, HttpStatus status, WebRequest request) {
-        // TODO Auto-generated method stub
-        return ResponseEntity.badRequest().body(ex.getMessage());
-    }
-	
+	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+
+		return ResponseEntity.badRequest().body(ex.getMessage());
+	}
+
 	@ExceptionHandler(DependenteException.class)
-    public ResponseEntity<String> trataIdInvalido(DependenteException exception) {
-        
-        return ResponseEntity.badRequest().body("Idade inválida");
-    }
-	 
+	public ResponseEntity<String> trataIdInvalido(DependenteException exception) {
+
+		return ResponseEntity.badRequest().body("Idade inválida");
+	}
+
 }
